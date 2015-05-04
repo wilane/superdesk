@@ -344,7 +344,8 @@
 
         $scope.repo = {
             ingest: true,
-            archive: true
+            archive: true,
+            text_archive: true
         };
 
         function refresh() {
@@ -709,6 +710,10 @@
                         } else {
                             if (scope.item._type === 'archive') {
                                 scope.item.container = 'location:workspace';
+                            } else {
+                                if (scope.item._type === 'text_archive') {
+                                    scope.item.container = 'text archive';
+                                }
                             }
                         }
                     }
@@ -771,7 +776,7 @@
                             {term: {unique_name: scope.meta.unique_name}}
                         ];
                         var criteria = {
-                            repo: 'ingest,archive',
+                            repo: 'ingest,archive,text_archive',
                             source: {
                                 query: {filtered: {filter: {
                                     and: filter
@@ -892,6 +897,7 @@
                         if (params.repo) {
                             scope.repo.archive = params.repo.indexOf('archive') >= 0;
                             scope.repo.ingest = params.repo.indexOf('ingest') >= 0;
+                            scope.repo.text_archive = params.repo.indexOf('text_archive') >= 0;
                         }
 
                         if (!scope.repo.archive && !scope.repo.ingest) {

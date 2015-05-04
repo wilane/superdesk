@@ -17,6 +17,12 @@
                     <input type="checkbox" id="archive-collection" ng-model="repo.archive" ng-checked="repo.archive" tabindex="5">
                 </label>
             </div>
+            <div class="field">
+                <label for="text_archive-collection">
+                    {{:: 'Text Archive' | translate}}
+                    <input type="checkbox" id="text_archive-collection" ng-model="repo.text_archive" ng-checked="repo.text_archive" tabindex="6">
+                </label>
+            </div>
         </div>
     </fieldset>
     <fieldset ng-if="context">
